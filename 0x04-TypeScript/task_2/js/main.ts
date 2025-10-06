@@ -42,13 +42,12 @@ class Teacher implements TeacherInterface {
   }
 }
 
-// createEmployee function
+// createEmployee function - FIXED VERSION
 function createEmployee(salary: number | string): Director | Teacher {
   if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
-  } else {
-    return new Director();
   }
+  return new Director();
 }
 
 // Test cases
@@ -63,11 +62,15 @@ console.log(createEmployee('$500'));
 
 // Additional test to verify methods work
 const employee1 = createEmployee(200);
-console.log(employee1.workFromHome()); // Should output: Cannot work from home
-console.log(employee1.getCoffeeBreak()); // Should output: Cannot have a break
-console.log(employee1.workTeacherTasks()); // Should output: Getting to work
+if ('workTeacherTasks' in employee1) {
+  console.log(employee1.workFromHome()); // Should output: Cannot work from home
+  console.log(employee1.getCoffeeBreak()); // Should output: Cannot have a break
+  console.log(employee1.workTeacherTasks()); // Should output: Getting to work
+}
 
 const employee2 = createEmployee(1000);
-console.log(employee2.workFromHome()); // Should output: Working from home
-console.log(employee2.getCoffeeBreak()); // Should output: Getting a coffee break
-console.log(employee2.workDirectorTasks()); // Should output: Getting to director tasks
+if ('workDirectorTasks' in employee2) {
+  console.log(employee2.workFromHome()); // Should output: Working from home
+  console.log(employee2.getCoffeeBreak()); // Should output: Getting a coffee break
+  console.log(employee2.workDirectorTasks()); // Should output: Getting to director tasks
+}
