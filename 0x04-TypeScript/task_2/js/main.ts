@@ -42,9 +42,9 @@ class Teacher implements TeacherInterface {
   }
 }
 
-// createEmployee function - FIXED VERSION
+// createEmployee function - EXACT PATTERN VERSION
 function createEmployee(salary: number | string): Director | Teacher {
-  if (typeof salary === 'number' && salary < 500) {
+  if (salary < 500) {
     return new Teacher();
   }
   return new Director();
