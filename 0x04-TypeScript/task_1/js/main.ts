@@ -34,8 +34,8 @@ interface StudentClassInterface {
   displayName(): string;
 }
 
-// StudentClass implementation
-class StudentClass implements StudentClassInterface {
+// StudentClass implementation - FIXED VERSION
+class StudentClass {
   private firstName: string;
   private lastName: string;
 
