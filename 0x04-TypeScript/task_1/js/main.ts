@@ -18,8 +18,8 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// printTeacher function implementation
-const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+// printTeacher function implementation - FIXED VERSION
+const printTeacher: printTeacherFunction = function (firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}. ${lastName}`;
 };
 
@@ -47,5 +47,3 @@ console.log(director1);
 
 // Test the printTeacher function
 console.log(printTeacher("John", "Doe")); // Should output: J. Doe
-console.log(printTeacher("Alice", "Smith")); // Should output: A. Smith
-console.log(printTeacher("Michael", "Johnson")); // Should output: M. Johnson
