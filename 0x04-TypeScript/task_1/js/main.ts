@@ -8,10 +8,20 @@ interface Teacher {
   [propName: string]: any;
 }
 
-// Directors interface that extends Teacher
+// Director interface that extends Teacher
 interface Director extends Teacher {
   numberOfReports: number;
 }
+
+// Interface for printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+// printTeacher function implementation
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+  return `${firstName.charAt(0)}. ${lastName}`;
+};
 
 // Example from previous task
 const teacher3: Teacher = {
@@ -35,14 +45,7 @@ const director1: Director = {
 
 console.log(director1);
 
-// Additional test case to show it works with optional yearsOfExperience
-const director2: Director = {
-  firstName: 'Jane',
-  lastName: 'Smith',
-  location: 'New York',
-  fullTimeEmployee: true,
-  numberOfReports: 10,
-  yearsOfExperience: 8, // Optional property from Teacher
-};
-
-console.log(director2);
+// Test the printTeacher function
+console.log(printTeacher("John", "Doe")); // Should output: J. Doe
+console.log(printTeacher("Alice", "Smith")); // Should output: A. Smith
+console.log(printTeacher("Michael", "Johnson")); // Should output: M. Johnson
