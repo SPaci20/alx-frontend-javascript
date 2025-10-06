@@ -18,8 +18,8 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// printTeacher function implementation - EXACT MATCH VERSION
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+// printTeacher function implementation - FIXED RETURN
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName[0]}. ${lastName}`;
 }
 
@@ -46,4 +46,4 @@ const director1: Director = {
 console.log(director1);
 
 // Test the printTeacher function
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // Should output: J. Doe
+console.log(printTeacher("John", "Doe")); // Should output: J. Doe
