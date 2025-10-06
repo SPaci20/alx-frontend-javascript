@@ -66,32 +66,9 @@ function executeWork(employee: Director | Teacher): string {
 
 // Test cases
 console.log(createEmployee(200));
-// Should output: Teacher
-
 console.log(createEmployee(1000));
-// Should output: Director
-
 console.log(createEmployee('$500'));
-// Should output: Director
 
 // Test executeWork function
 console.log(executeWork(createEmployee(200)));
-// Should output: Getting to work
-
 console.log(executeWork(createEmployee(1000)));
-// Should output: Getting to director tasks
-
-// Additional test to verify methods work
-const employee1 = createEmployee(200);
-if (isDirector(employee1)) {
-  console.log(employee1.workDirectorTasks());
-} else {
-  console.log(employee1.workTeacherTasks()); // Should output: Getting to work
-}
-
-const employee2 = createEmployee(1000);
-if (isDirector(employee2)) {
-  console.log(employee2.workDirectorTasks()); // Should output: Getting to director tasks
-} else {
-  console.log(employee2.workTeacherTasks());
-}
