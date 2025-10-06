@@ -42,12 +42,26 @@ class Teacher implements TeacherInterface {
   }
 }
 
-// createEmployee function - EXACT PATTERN VERSION
+// createEmployee function
 function createEmployee(salary: number | string): Director | Teacher {
-  if (salary < 500) {
+  if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
   }
   return new Director();
+}
+
+// isDirector function - type predicate
+function isDirector(employee: Director | Teacher): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+
+// executeWork function
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
 }
 
 // Test cases
@@ -60,17 +74,24 @@ console.log(createEmployee(1000));
 console.log(createEmployee('$500'));
 // Should output: Director
 
+// Test executeWork function
+console.log(executeWork(createEmployee(200)));
+// Should output: Getting to work
+
+console.log(executeWork(createEmployee(1000)));
+// Should output: Getting to director tasks
+
 // Additional test to verify methods work
 const employee1 = createEmployee(200);
-if ('workTeacherTasks' in employee1) {
-  console.log(employee1.workFromHome()); // Should output: Cannot work from home
-  console.log(employee1.getCoffeeBreak()); // Should output: Cannot have a break
+if (isDirector(employee1)) {
+  console.log(employee1.workDirectorTasks());
+} else {
   console.log(employee1.workTeacherTasks()); // Should output: Getting to work
 }
 
 const employee2 = createEmployee(1000);
-if ('workDirectorTasks' in employee2) {
-  console.log(employee2.workFromHome()); // Should output: Working from home
-  console.log(employee2.getCoffeeBreak()); // Should output: Getting a coffee break
+if (isDirector(employee2)) {
   console.log(employee2.workDirectorTasks()); // Should output: Getting to director tasks
+} else {
+  console.log(employee2.workTeacherTasks());
 }
