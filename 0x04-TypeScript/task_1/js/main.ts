@@ -18,10 +18,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// printTeacher function implementation - FIXED VERSION
-const printTeacher: printTeacherFunction = function (firstName: string, lastName: string): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
-};
+// printTeacher function implementation - STANDALONE FUNCTION
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName[0]}. ${lastName}`;
+}
 
 // Example from previous task
 const teacher3: Teacher = {
