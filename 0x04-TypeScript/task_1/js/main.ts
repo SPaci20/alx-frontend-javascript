@@ -18,9 +18,39 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// printTeacher function implementation - COMBINED VERSION
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
-  return `${firstName}. ${lastName}`;
+// printTeacher function implementation
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName[0]}. ${lastName}`;
+}
+
+// Interface for StudentClass constructor
+interface StudentConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+// Interface for StudentClass methods
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+// StudentClass implementation
+class StudentClass implements StudentClassInterface {
+  private firstName: string;
+  private lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
 }
 
 // Example from previous task
@@ -46,4 +76,9 @@ const director1: Director = {
 console.log(director1);
 
 // Test the printTeacher function
-console.log(printTeacher({ firstName: "John", lastName: "Doe" })); // Should output: J. Doe
+console.log(printTeacher("John", "Doe")); // Should output: J. Doe
+
+// Test the StudentClass
+const student = new StudentClass("Alice", "Smith");
+console.log(student.displayName()); // Should output: Alice
+console.log(student.workOnHomework()); // Should output: Currently working
