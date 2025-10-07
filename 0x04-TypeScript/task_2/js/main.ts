@@ -67,7 +67,7 @@ function executeWork(employee: Director | Teacher): string {
 // String literal type for Subjects
 type Subjects = 'Math' | 'History';
 
-// teachClass function - FIXED VERSION
+// teachClass function
 function teachClass(todayClass: Subjects): string {
   if (todayClass === 'Math') {
     return 'Teaching Math';
@@ -79,7 +79,5 @@ function teachClass(todayClass: Subjects): string {
 // Test the functions
 console.log(executeWork(createEmployee(200)));
 console.log(executeWork(createEmployee(1000)));
-
-// Test teachClass function
 console.log(teachClass('Math'));
 console.log(teachClass('History'));
